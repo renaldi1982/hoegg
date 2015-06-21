@@ -2,7 +2,7 @@
 var app = angular.module('hoegg',[]);
 
 /* Controllers */
-app.controller('ObjectController',['$scope','$http',function($scope,$http){
+app.controller('ObjectController',['$scope','$http','$window',function($scope,$http,$window){
 	$scope.data = "";
 	$scope.result = "";		
 	$scope.JSONObj = {};	
@@ -92,7 +92,7 @@ app.controller('ObjectController',['$scope','$http',function($scope,$http){
 	
 	/* Reload page */
 	$scope.reload = function(){
-		windows.location.reload();
+		$window.location.reload();
 	}
 	
 	/* End Button Controllers */

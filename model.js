@@ -8,6 +8,9 @@ app.controller('ObjectController',['$scope','$http',function($scope,$http){
 	$scope.JSONObj = {};	
 	$scope.url = "http://63.223.84.104:44400/hoegg/data.json"
 	
+		
+	/* Buttons Controllers */
+		
 	/* Load dummy JSON data */
 	$scope.fetch = function(){
 		$http.get($scope.url).success(function(data, status, config){
@@ -23,7 +26,7 @@ app.controller('ObjectController',['$scope','$http',function($scope,$http){
 		});		
 	}
 	
-	/* Clean Data */
+	/* Clean Input */
 	$scope.submit = function(){			
 		if($scope.data.length > 0){
 			var data = $scope.data.trim().replace(/\s/g,"");						
@@ -45,6 +48,7 @@ app.controller('ObjectController',['$scope','$http',function($scope,$http){
 		}								
 	}	
 	
+	/* Clean JSON from duplicates */
 	$scope.clean = function(){		
 		var outerField = [];
 		var innerField = [];
@@ -86,6 +90,14 @@ app.controller('ObjectController',['$scope','$http',function($scope,$http){
 		}		
 	}
 	
+	/* Reload page */
+	$scope.reload = function(){
+		windows.location.reload();
+	}
+	
+	/* End Button Controllers */
+	
+	
 	/* Error and Style */
 	$scope.error = "";
 	$scope.customStyle = {
@@ -96,25 +108,15 @@ app.controller('ObjectController',['$scope','$http',function($scope,$http){
 	$scope.turnGreen = function(){
 		var style = $scope.customStyle.style;
 		style["color"] = "green";
-//		if($scope.customStyle.style.hasOwnProperty("color")){			
-//			
-//		}else{
-//			$scope.customStyle.style =+ {"color" : "green"};
-//		}		
 	}
 	$scope.turnRed = function(){
 		var style = $scope.customStyle.style;
 		style["color"] = "red";
-//		if($scope.customStyle.style.hasOwnProperty("color")){
-//			alert("has color");
-//			$scope.customStyle.style["color"] = "red";
-//		}else{
-//			alert("add color");
-//			$scope.customStyle.style =+ {"color" : "red"};
-//		}		
 	}
 	
 }]);
+
+/* Functions */
 
 /* Check if object contains any outer key */
 function hasKey(outer,object){

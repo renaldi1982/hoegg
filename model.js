@@ -2,11 +2,27 @@
 var app = angular.module('hoegg',[]);
 
 /* Controllers */
-app.controller('ObjectController',['$scope',function($scope){
+app.controller('ObjectController',['$scope','$http',function($scope,$http){
 	$scope.data = "";
 	$scope.result = "";		
 	$scope.JSONObj = {};	
-		
+	$scope.url = "http://63.223.84.104:44400/hoegg/data.json"
+	
+	/* Load dummy JSON data */
+	$scope.fetch = function(){
+		$http.get($scope.url).success(function(data, status, config){
+			$scope.JSONObj = data;
+			$scope.data = JSON.stringify(data);
+			$scope.submit();
+			$scope.turnGreen();
+			$scope.error = "Dummy JSON Loaded";
+		}).error(function(data, status, header, config){
+			console.log(status);
+			$scope.turnRed();
+			$scope.error = "Data Unavailable";
+		});		
+	}
+	
 	/* Clean Data */
 	$scope.submit = function(){			
 		if($scope.data.length > 0){

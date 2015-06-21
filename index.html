@@ -8,24 +8,26 @@
         </head>
 
         <body>
-
-
-                <div ng-controller="ObjectController" style="text-align: center;">
-                        <h2>JSON DATA</h2>
-                        <p ng-model="error" ng-style="customStyle.style">{{ error }}</p>
-                        <div style="float: left;position: fixed; margin-left: 300px;">
-                                <textarea rows="20" cols="50" ng-model="data" ng-trim="false"></textarea>
-                                <p>{{ data.length }} chars </p>
-
-                                <button ng-click="submit()">Load JSON</button>
-                        </div>
-
-                        <div style="float: right;margin-right: 300px;">
-                                <textarea rows="20" cols="50" ng-model="result" ng-trim="false"></textarea>
-                                <p>Click Clean to remove nested repeated fields </p>
-                                <button ng-click="clean()">Clean</button>
-                        </div>
-                </div>
+								
+            <div ng-controller="ObjectController" style="width: 70%; display : table; margin-right : auto; margin-left : auto;">
+                    <h2>JSON Nested Cleaner</h2>                        
+                    <p ng-model="error" ng-style="customStyle.style">{{ error }}</p>
+                    <div style="display : table-row;">
+	                    <div style="display : table-cell;">
+	                            <textarea rows="20" cols="50" ng-model="data" ng-trim="false"></textarea>
+	                            <p>{{ data.length }} chars </p>
+								<button ng-click="fetch()">Load JSON dummy</button>
+	                            <button ng-click="submit()">Load</button>
+	                    </div>
+	
+	                    <div style="display : table-cell;">
+	                            <textarea rows="20" cols="50" ng-model="result" ng-trim="false" disabled></textarea>
+	                            <p>Click Clean to remove nested repeated fields </p>
+	                            <button ng-click="clean()">Clean</button>
+	                    </div>
+                    </div>
+            </div>                
+                	
         </body>
 </html>
 
